@@ -1,9 +1,8 @@
-## Name: Pavithra D
-## Register Number : 212223230146
 
 # Ex-4-LETTER-FOLLOWED-BY-ANY-NUMBER-OF-LETTERS-OR-DIGITS-USING-YACC-USING-YACC
 RECOGNITION OF A VALID VARIABLE WHICH STARTS WITH A LETTER FOLLOWED BY ANY NUMBER OF LETTERS OR DIGITS USING YACC
-
+## Name: Shanmuga Raj.K
+## Register Number : 212223040192
 # Aim:
 To write a YACC program to recognize a valid variable which starts with a letter followed by any number of letters or digits.
 # ALGORITHM
@@ -72,8 +71,7 @@ void yyerror(char *s) {
 
 
 # Output
-
-![Screenshot_from_2024-10-17_14-10-29 1](https://github.com/user-attachments/assets/7703109c-a7b3-4dd3-802e-7bbb4f5ee5cb)
+![image](https://github.com/user-attachments/assets/0874fb5b-a4a8-4bf5-a9e8-06996bc50656)
 
 
 # Result
