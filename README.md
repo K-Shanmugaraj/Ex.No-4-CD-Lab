@@ -42,23 +42,40 @@ int yywrap() { return 1; }
 ```
 %{
 #include <stdio.h>
-/* This YACC program is for recognizing the Expression */
+#include <stdlib.h>
+extern char *yytext; // Declare yytext to fix the undeclared error
+
+void yyerror(const char *s);
+int yylex(void);  // Declare yylex to use the lexer
 %}
 
 %token ID INT FLOAT DOUBLE
-%% D: T L;
-L: L ',' ID   | ID;
-
-T: INT | FLOAT | DOUBLE;
 
 %%
-extern FILE *yyin; int main() {
-do {
-yyparse();
-} while (!feof(yyin)); return 0;
+D: T L { printf("Valid declaration.\n"); }
+ ;
+
+L: L ',' ID
+ | ID
+ ;
+
+T: INT
+ | FLOAT
+  | DOUBLE
+ ;
+
+%%
+extern FILE *yyin;
+
+int main() {
+    printf("Enter declaration (e.g., int a,b):\n");
+    yyparse(); // Start parsing
+    return 0;
 }
 
-void yyerror(char *s) { 
+void yyerror(const char *s) {
+    fprintf(stderr, "Error: %s\n", s);
+    printf("Lexical error at token: %s\n", yytext);  // Debugging output
 }
 
 ```
