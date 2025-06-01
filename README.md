@@ -21,28 +21,21 @@ To write a YACC program to recognize a valid variable which starts with a letter
 ```
 %{
 #include "y.tab.h"
+#include <stdio.h>
 %}
 
 %%
+"int"       { return INT; }
+"float"     { return FLOAT; }
+"double"    { return DOUBLE; }
 
-"int" { return INT; } 
-"float" { return FLOAT; }
-"double" { return DOUBLE; }
+[a-zA-Z_][a-zA-Z0-9_]*    { printf("Identifier: %s\n", yytext); return ID; }
 
-[a-zA-Z][a-zA-Z0-9]* {
-printf("\nIdentifier is %s", yytext); return ID;
-}
-
-. { return yytext[0]; }
-
-\n { return 0; }
-
+[ \t\n]+    ;       // Ignore whitespace
+.           { return yytext[0]; } // Return other characters (punctuation, etc.)
 %%
+int yywrap() { return 1; }
 
-int yywrap() 
-{ 
-return 1;
-}
 
 ```
 ### EX4.y
